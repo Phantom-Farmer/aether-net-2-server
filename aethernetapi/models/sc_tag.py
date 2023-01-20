@@ -4,7 +4,7 @@ from .tag import Tag
 
 class SC_Tag(models.Model):
 
-    sleep_number = models.ForeignKey(Sleep_Card, on_delete=models.CASCADE)
+    sleep_card = models.ForeignKey(Sleep_Card, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
     def __str__(self):
