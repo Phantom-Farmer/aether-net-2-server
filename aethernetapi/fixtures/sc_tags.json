@@ -1,0 +1,26 @@
+[
+  {
+    "model": "aethernetapi.sc_tag",
+    "pk": 1,
+    "fields": {
+      "sleep_card_id": 1,
+      "tag_id": 1
+    }
+  },
+  {
+    "model": "aethernetapi.sc_tag",
+    "pk": 2,
+    "fields": {
+      "sleep_card_id": 2,
+      "tag_id": 2
+    }
+  },
+  {
+    "model": "aethernetapi.sc_tag",
+    "pk": 3,
+    "fields": {
+      "sleep_card_id": 2,
+      "tag_id": 3
+    }
+  }
+]

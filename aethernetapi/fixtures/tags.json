@@ -1,0 +1,23 @@
+[
+  {
+    "model": "aethernetapi.tag",
+    "pk": 1,
+    "fields": {
+    "label": "cray"
+    }
+  },
+  {
+    "model": "aethernetapi.tag",
+    "pk": 2,
+    "fields": {
+    "label": "bestsleep"
+    }
+  },
+  {
+    "model": "aethernetapi.tag",
+    "pk": 3,
+    "fields": {
+    "label": "worstsleep"
+    }
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "model": "aethernetapi.sleep_card",
+    "pk": 1,
+    "fields": {
+      "time_stamp": "10/31/2022, 6:54:32 PM",
+      "mind": "feeling badass",
+      "body": "tops",
+      "meditation": "custom",
+      "favorite": false,
+      "author": 1
+    }
+  },
+  {
+    "model": "aethernetapi.sleep_card",
+    "pk": 2,
+    "fields": {
+      "time_stamp": "10/31/2022, 6:54:22 PM",
+      "mind": "feeling good",
+      "body": "bottoms",
+      "meditation": "custom",
+      "favorite": false,
+      "author": 1
+    }
+  }
+]
