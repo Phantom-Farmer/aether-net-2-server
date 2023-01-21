@@ -1,3 +1,9 @@
+from django.contrib import admin
+from django.urls import path
+from django.conf.urls import include
+from rest_framework import routers
+from aethernetapi.views import register_user, check_user
+from aethernetapi.views import UserView, SleepCardView, DreamJournalView, TagView, SCTagsView
 """aether_net_2 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,9 +19,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'users', UserView, 'users')
+router.register(r'sleep_card', SleepCardView, 'sleep_card')
+router.register(r'dream_journal', DreamJournalView, 'dream_journal')
+router.register(r'tag', TagView, 'tag')
+router.register(r'sc_tag', SCTagsView, 'sc_tag')
+
 
 urlpatterns = [
+# Requests to http://localhost:8000/register will be routed to the register_user function
+    path('register', register_user),
+# Requests to http://localhost:8000/checkuser will be routed to the login_user function
+    path('checkuser', check_user),
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
 ]

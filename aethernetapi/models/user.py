@@ -8,7 +8,4 @@ class User(models.Model):
     image_url = models.URLField(max_length=250)
     email = models.EmailField(max_length=250)
     last_login = models.DateField(("Date"), default=datetime.date.today)
-
-    def __str__(self):
-        return self.name
-    
+        

@@ -28,11 +28,11 @@ class DreamJournalView(ViewSet):
             Response -- JSON serialized dream journal
         """
         author = User.objects.get(pk=request.data["author"])
-        sleep_card_id= Sleep_Card.objects.get(pk=request.data["sleep_card_id"])
+        sleep_number= Sleep_Card.objects.get(pk=request.data["sleep_number"])
 
         dream_journal = Dream_Journal.objects.create(
             author=author,
-            sleep_card_id=sleep_card_id,
+            sleep_number=sleep_number,
             dream=request.data["dream"],
             sleep_review=request.data["sleep_review"]
         )
@@ -48,10 +48,10 @@ class DreamJournalView(ViewSet):
         dream_journal = Dream_Journal.objects.get(pk=pk)
 
         author = User.objects.get(pk=request.data["author"])
-        sleep_card_id = Sleep_Card.objects.get(pk=request.data["sleep_card_id"])
+        sleep_number = Sleep_Card.objects.get(pk=request.data["sleep_number"])
 
         dream_journal.author=author
-        dream_journal.sleep_card_id=sleep_card_id
+        dream_journal.sleep_number=sleep_number
         dream_journal.dream=request.data["dream"]
         dream_journal.sleep_review=request.data["sleep_review"]
         dream_journal.save()
@@ -68,5 +68,5 @@ class DreamJournalSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Dream_Journal
-        fields = ('id', 'author', 'sleep_card_id', 'dream', 'sleep_review')
+        fields = ('id', 'author', 'sleep_number', 'dream', 'sleep_review')
         depth = 1

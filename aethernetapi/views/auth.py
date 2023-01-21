@@ -19,7 +19,7 @@ def check_user(request):
         data = {
             'id': user.id,
             'uid': user.uid,
-            'email': user.email,  
+            'email': user.email,
         }
         print(data)
         return Response(data)

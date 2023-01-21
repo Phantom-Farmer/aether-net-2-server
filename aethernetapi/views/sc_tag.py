@@ -2,22 +2,27 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from aethernetapi.models import Sleep_Card, Tag, SC_Tag
+from aethernetapi.models import SC_Tag, Sleep_Card, Tag
 
 class SCTagsView(ViewSet):
     """ SC_Tags View"""
+    
+    def list(self, request):
+        sc_tags = SC_Tag.objects.all()
+        serializer = SCTagSerializer(sc_tags, many=True)
+        return Response(serializer.data)
 
     def create(self, request):
-        """Handle POST operations
+        """Handle POSt operations
         Returns
-            Response -- JSON serialized SleepCard instance
+            Response -- JSON serialized SC_Tag instance
         """
-        tag = Tag.objects.get(pk=request.data['tag_id'])
-        sleep_card = Sleep_Card.objects.get(pk=request.data['sleepCard_id'])
+        sleep_number = Sleep_Card.objects.get(pk=request.data['sleep_number'])
+        tag = Tag.objects.get(pk=request.data['tag'])
 
         sc_tag = SC_Tag.objects.create(
-          tag = tag,
-          sleep_card = sleep_card
+          sleep_number = sleep_number,
+          tag = tag
         )
 
         serializer = SCTagSerializer(sc_tag)
@@ -34,5 +39,5 @@ class SCTagSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SC_Tag
-        fields = ('id', 'tag', 'sleep_card')
+        fields = ('id', 'sleep_number', 'tag')
         depth = 1

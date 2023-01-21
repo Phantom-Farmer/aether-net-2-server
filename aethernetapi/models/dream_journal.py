@@ -10,6 +10,3 @@ class Dream_Journal(models.Model):
     dream = models.CharField(max_length=1000)
     sleep_number = models.ForeignKey(Sleep_Card, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name

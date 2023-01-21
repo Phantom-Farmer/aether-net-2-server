@@ -32,7 +32,6 @@ class SleepCardView(ViewSet):
             body = request.data["body"],
             meditation = request.data["meditation"],
             favorite = request.data["favorite"],
-            author = request.data["author"],
             author = author
         )
         serializer = SleepCardSerializer(sleep_card)
@@ -61,5 +60,5 @@ class SleepCardSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sleep_Card
-        fields = ('id', 'user', 'time_stamp', 'mind', 'body', 'meditation', 'favorite', 'author')
+        fields = ('id', 'time_stamp', 'mind', 'body', 'meditation', 'favorite', 'author')
         depth = 1
