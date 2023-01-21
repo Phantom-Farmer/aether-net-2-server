@@ -3,7 +3,7 @@
     "model": "aethernetapi.sleep_card",
     "pk": 1,
     "fields": {
-      "time_stamp": "10/31/2022, 6:54:32 PM",
+      "time_stamp": "2022-10-31",
       "mind": "feeling badass",
       "body": "tops",
       "meditation": "custom",
@@ -15,7 +15,7 @@
     "model": "aethernetapi.sleep_card",
     "pk": 2,
     "fields": {
-      "time_stamp": "10/31/2022, 6:54:22 PM",
+      "time_stamp": "2022-10-31",
       "mind": "feeling good",
       "body": "bottoms",
       "meditation": "custom",
