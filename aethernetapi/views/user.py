@@ -40,10 +40,10 @@ class UserView(ViewSet):
 
         user = User.objects.get(pk=pk)
 
-        uid=request.data['uid']
-        image_url = request.data['profile_image_url']
-        email = request.data['email']
-        last_login = request.data['last_login']
+        user.uid=request.data['uid']
+        user.image_url = request.data['image_url']
+        user.email = request.data['email']
+        user.last_login = request.data['last_login']
         user.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)

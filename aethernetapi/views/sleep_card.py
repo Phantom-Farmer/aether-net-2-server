@@ -24,7 +24,7 @@ class SleepCardView(ViewSet):
 
     def create(self, request):
 
-        author = User.objects.get(uid=request.data["user"])
+        author = User.objects.get(pk=request.data["author"])
 
         sleep_card = Sleep_Card.objects.create(
             time_stamp = datetime.date.today(),
@@ -40,13 +40,14 @@ class SleepCardView(ViewSet):
     def update(self, request, pk):
 
         sleep_card = Sleep_Card.objects.get(pk=pk)
+        author = User.objects.get(pk=request.data["author"])
 
         sleep_card.time_stamp = datetime.date.today()
         sleep_card.mind = request.data["mind"]
         sleep_card.body = request.data["body"]
         sleep_card.meditation = request.data["meditation"]
         sleep_card.favorite = request.data["favorite"]
-        sleep_card.author = request.data["author"]
+        sleep_card.author = author
         sleep_card.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)

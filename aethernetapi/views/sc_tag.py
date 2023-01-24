@@ -6,7 +6,7 @@ from aethernetapi.models import SC_Tag, Sleep_Card, Tag
 
 class SCTagsView(ViewSet):
     """ SC_Tags View"""
-    
+
     def list(self, request):
         sc_tags = SC_Tag.objects.all()
         serializer = SCTagSerializer(sc_tags, many=True)
@@ -27,6 +27,18 @@ class SCTagsView(ViewSet):
 
         serializer = SCTagSerializer(sc_tag)
         return Response(serializer.data)
+
+    def update(self, request, pk):
+        sc_tag = SC_Tag.objects.get(pk=pk)
+
+        sleep_number = Sleep_Card.objects.get(pk=request.data["sleep_number"])
+        tag = Tag.objects.get(pk=request.data["tag"])
+
+        sc_tag.sleep_number = sleep_number
+        sc_tag.tag = tag
+        sc_tag.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
         sc_tag = SC_Tag.objects.get(pk=pk)
