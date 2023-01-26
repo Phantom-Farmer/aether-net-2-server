@@ -19,9 +19,10 @@ def check_user(request):
         data = {
             'id': user.id,
             'uid': user.uid,
+            'image_url': user.image_url,
             'email': user.email,
+            'last_login': user.last_login,
         }
-        print(data)
         return Response(data)
     except:
         # Bad login details were provided. So we can't log the user in.
@@ -38,7 +39,7 @@ def register_user(request):
     # Now save the user info in the aethernetapi user table
     user = User.objects.create(
         uid=request.data['uid'],
-        profile_image_url = request.data['profile_image_url'],
+        image_url = request.data['image_url'],
         email = request.data['email'],
         last_login = request.data['last_login'],
     )
@@ -47,6 +48,9 @@ def register_user(request):
     data = {
             'id': user.id,
             'uid': user.uid,
-            'bio': user.bio
+            'image_url': user.image_url,
+            'email': user.email,
+            'last_login': user.last_login,
+    
     }
     return Response(data)
