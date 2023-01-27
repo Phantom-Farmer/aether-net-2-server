@@ -20,5 +20,28 @@
       "author": 1,
       "sleep_number": 2
     }
+  },
+  {
+    "model": "aethernetapi.dream_journal",
+    "pk": 3,
+    "fields": {
+      "time_stamp": "2022-10-31",
+      "sleep_review": "super duper",
+      "dream": "walla walla bing bang",
+      "author": 4,
+      "sleep_number": 3
+    }
+  },
+  {
+    "model": "aethernetapi.dream_journal",
+    "pk": 4,
+    "fields": {
+      "time_stamp": "2022-10-31",
+      "sleep_review": "like a blog",
+      "dream": "green apples in the sun",
+      "author": 4,
+      "sleep_number": 4
+    }
   }
+  
 ]

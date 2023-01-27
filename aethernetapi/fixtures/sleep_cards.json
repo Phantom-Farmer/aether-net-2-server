@@ -34,5 +34,17 @@
       "favorite": false,
       "author": 4
     }
+  },
+  {
+    "model": "aethernetapi.sleep_card",
+    "pk": 4,
+    "fields": {
+      "time_stamp": "2022-11-9",
+      "mind": "hangin in there",
+      "body": "beat down",
+      "meditation": "custom",
+      "favorite": false,
+      "author": 4
+    }
   }
 ]
