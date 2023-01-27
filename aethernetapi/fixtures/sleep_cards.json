@@ -22,5 +22,17 @@
       "favorite": false,
       "author": 1
     }
+  },
+  {
+    "model": "aethernetapi.sleep_card",
+    "pk": 3,
+    "fields": {
+      "time_stamp": "2022-10-31",
+      "mind": "freaking out",
+      "body": "tired",
+      "meditation": "custom",
+      "favorite": false,
+      "author": 4
+    }
   }
 ]

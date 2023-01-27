@@ -18,5 +18,15 @@
       "last_login": "2022-10-31",
       "uid": "P43IPsThz0aTNuCXfNnENec5GQy2"
     }
+  },
+  {
+    "model": "aethernetapi.user",
+    "pk": 4,
+    "fields": {
+      "image_url": "https://lh3.googleusercontent.com/a/AEdFTp753KJBKYiZkaMK0NC4J8XNWi-dPxVuKe52RuvGWg=s96-c",
+      "email": "joeljdahl@gmail.com",
+      "last_login": "2023-01-26",
+      "uid": "ZeQGxW6aM9fc4Y3y0cs4pp35qI83"
+    }
   }
 ]

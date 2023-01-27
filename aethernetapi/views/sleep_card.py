@@ -16,9 +16,11 @@ class SleepCardView(ViewSet):
     def list(self, request):
 
         sleep_cards = Sleep_Card.objects.all()
+        user=User.objects.all()
         uid_query = request.query_params.get('uid', None)
         if uid_query is not None:
-            sleep_cards = sleep_cards.filter(user=uid_query)
+            user=User.objects.get(uid=uid_query)
+            sleep_cards = sleep_cards.filter(author=user)
         serializer = SleepCardSerializer(sleep_cards, many = True)
         return Response(serializer.data)
 
