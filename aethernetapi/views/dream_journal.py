@@ -19,6 +19,10 @@ class DreamJournalView(ViewSet):
     def list(self, request):
         """"Handle GET requests to handle all dream journals"""
         dream_journals = Dream_Journal.objects.all()
+        author_id = request.query_params.get('author', None )
+        if author_id is not None:
+            author = User.objects.get(pk=author_id)
+            dream_journals = dream_journals.filter(author=author)
         serializer = DreamJournalSerializer(dream_journals, many=True)
         return Response(serializer.data)
 
