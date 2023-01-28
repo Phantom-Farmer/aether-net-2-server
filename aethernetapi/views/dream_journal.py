@@ -1,3 +1,4 @@
+import datetime
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -35,10 +36,12 @@ class DreamJournalView(ViewSet):
         sleep_number= Sleep_Card.objects.get(pk=request.data["sleep_number"])
 
         dream_journal = Dream_Journal.objects.create(
+            time_stamp=datetime.date.today(),
             author=author,
             sleep_number=sleep_number,
             dream=request.data["dream"],
             sleep_review=request.data["sleep_review"]
+            
         )
         serializer = DreamJournalSerializer(dream_journal)
         return Response(serializer.data)
@@ -54,6 +57,7 @@ class DreamJournalView(ViewSet):
         author = User.objects.get(pk=request.data["author"])
         sleep_number = Sleep_Card.objects.get(pk=request.data["sleep_number"])
 
+        dream_journal.time_stamp = datetime.date.today()
         dream_journal.author=author
         dream_journal.sleep_number=sleep_number
         dream_journal.dream=request.data["dream"]
