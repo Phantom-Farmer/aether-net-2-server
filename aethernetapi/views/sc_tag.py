@@ -34,8 +34,8 @@ class SCTagView(ViewSet):
             return Response(serializer.data)
 
     def create(self, request):
-        tag = Tag.objects.get(pk=request.data["id"])
-        sleep_number = SC_Tag.objects.get(pk=request.data["id"])
+        tag = Tag.objects.get(id=request.data["tag_id"])
+        sleep_number = Sleep_Card.objects.get(pk=request.data["sleep_number_id"])
 
         sc_tag = SC_Tag.objects.create(
         sleep_number=sleep_number,
@@ -61,4 +61,4 @@ class SCTagSerializer(serializers.ModelSerializer):
     tag_id = serializers.ReadOnlyField(source='tag.id')
     class Meta:
         model = SC_Tag
-        fields = ('id', 'post_id', 'tag_label', 'tag_id')
+        fields = ('id', 'sc_id', 'tag_label', 'tag_id')
