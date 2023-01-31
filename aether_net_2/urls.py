@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
 from aethernetapi.views import register_user, check_user
-from aethernetapi.views import UserView, SleepCardView, DreamJournalView, TagView, SCTagsView
+from aethernetapi.views import UserView, SleepCardView, DreamJournalView, TagView, SCTagView
 """aether_net_2 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -24,7 +24,7 @@ router.register(r'users', UserView, 'users')
 router.register(r'sleep_card', SleepCardView, 'sleep_card')
 router.register(r'dream_journal', DreamJournalView, 'dream_journal')
 router.register(r'tag', TagView, 'tag')
-router.register(r'sc_tag', SCTagsView, 'sc_tag')
+router.register(r'sc_tag', SCTagView, 'sc_tag')
 
 
 urlpatterns = [
