@@ -21,19 +21,30 @@ class DreamJournalView(ViewSet):
         """"Handle GET requests to handle all dream journals"""
         dream_journals = Dream_Journal.objects.all()
         author_id = request.query_params.get('author', None )
+        sleep_id = request.query_params.get('sleep_number', None )
         if author_id is not None:
             author = User.objects.get(pk=author_id)
-            dream_journals = dream_journals.filter(author=author)
-        serializer = DreamJournalSerializer(dream_journals, many=True)
+            print('author_code_block')
+            auth_dream_journals = dream_journals.filter(author=author)
+            serializer = DreamJournalSerializer(auth_dream_journals, many=True)
+        if sleep_id is not None:
+            sc_dream_journal = dream_journals.filter(sleep_number_id=sleep_id)
+            serializer = DreamJournalSerializer(sc_dream_journal, many=True)
         return Response(serializer.data)
+        # dream_journals = Dream_Journal.objects.all()
+        # sleep_id = request.query_params.get('sleep_number', None )
+        # if sleep_id is not None:
+        #     sc_dream_journal = dream_journals.filter(sleep_number_id=sleep_id)
+        # serializer = DreamJournalSerializer(sc_dream_journal, many=True)
+        # return Response(serializer.data)
 
     def create(self, request):
         """Handle POST operations
         Returns
             Response -- JSON serialized dream journal
         """
-        author = User.objects.get(pk=request.data["author"])
-        sleep_number= Sleep_Card.objects.get(pk=request.data["sleep_number"])
+        author = User.objects.get(pk=request.data['author'])
+        sleep_number= Sleep_Card.objects.get(pk=request.data['sleep_number'])
 
         dream_journal = Dream_Journal.objects.create(
             time_stamp=datetime.date.today(),

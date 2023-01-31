@@ -4,12 +4,21 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from aethernetapi.models import Tag
 
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('id', 'label')
+        depth = 1
+
 class TagView(ViewSet):
 
     def retrieve(self, request, pk):
-        tag = Tag.objects.get(pk=pk)
-        serializer = TagSerializer(tag)
-        return Response(serializer.data)
+        try:
+            tag = Tag.objects.get(pk=pk)
+            serializer = TagSerializer(tag)
+            return Response(serializer.data)
+        except Tag.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
     def list(self, request):
         tags = Tag.objects.all()
@@ -36,9 +45,9 @@ class TagView(ViewSet):
         tag.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
-class TagSerializer(serializers.ModelSerializer):
+# class TagSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Tag
-        fields = ('id', 'label')
-        depth = 1
+#     class Meta:
+#         model = Tag
+#         fields = ('id', 'label')
+#         depth = 1
