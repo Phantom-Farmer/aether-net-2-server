@@ -4,6 +4,12 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from aethernetapi.models import Tag
 
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('id', 'label')
+        depth = 1
+
 class TagView(ViewSet):
 
     def retrieve(self, request, pk):
@@ -39,9 +45,9 @@ class TagView(ViewSet):
         tag.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
-class TagSerializer(serializers.ModelSerializer):
+# class TagSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Tag
-        fields = ('id', 'label')
-        depth = 1
+#     class Meta:
+#         model = Tag
+#         fields = ('id', 'label')
+#         depth = 1
